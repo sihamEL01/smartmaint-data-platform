@@ -48,3 +48,19 @@ From the repository root:
 
 ```bash
 python -m unittest discover -s tests -p "test_*.py" -v
+
+## Local Docker Environment
+
+SmartMaint uses Docker Compose to run the local PostgreSQL database.
+
+### Prerequisites
+
+- Docker Desktop
+- Docker Compose
+
+### Environment configuration
+
+Create the local environment file from the provided template:
+
+```powershell
+Copy-Item .env.example .env
