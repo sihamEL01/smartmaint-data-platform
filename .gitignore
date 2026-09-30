@@ -5,3 +5,7 @@
 # Python cache files
 __pycache__/
 *.py[cod]
+# Generated datasets
+data/generated/*.csv
+# Python package metadata
+*.egg-info/
