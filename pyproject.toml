@@ -1,3 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartmaint-data-platform"
+version = "0.1.0"
+description = "End-to-end data engineering platform for industrial maintenance."
+requires-python = ">=3.13"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
