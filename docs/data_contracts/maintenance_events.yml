@@ -1,0 +1,82 @@
+dataset:
+  name: maintenance_events
+  description: Maintenance interventions and failure events recorded for industrial equipment.
+  source: maintenance_postgresql
+  format: postgresql
+  grain: One row per maintenance intervention.
+
+primary_key:
+  - maintenance_id
+
+foreign_keys:
+  - column: equipment_id
+    references: equipment.equipment_id
+
+columns:
+  - name: maintenance_id
+    type: string
+    nullable: false
+    description: Unique identifier of the maintenance intervention.
+
+  - name: equipment_id
+    type: string
+    nullable: false
+    description: Identifier of the equipment concerned by the intervention.
+
+  - name: maintenance_type
+    type: string
+    nullable: false
+    allowed_values:
+      - CORRECTIVE
+      - PREVENTIVE
+      - PREDICTIVE
+    description: Type of maintenance intervention performed.
+
+  - name: failure_type
+    type: string
+    nullable: true
+    allowed_values:
+      - MECHANICAL
+      - ELECTRICAL
+      - OVERHEATING
+      - VIBRATION
+      - PRESSURE
+      - OTHER
+    description: Type of failure that triggered the intervention when applicable.
+
+  - name: started_at
+    type: timestamp
+    nullable: false
+    description: Timestamp when the maintenance intervention started.
+
+  - name: ended_at
+    type: timestamp
+    nullable: true
+    description: Timestamp when the maintenance intervention ended.
+
+  - name: downtime_minutes
+    type: integer
+    nullable: true
+    unit: minutes
+    min_value: 0
+    description: Total equipment downtime caused by the maintenance event.
+
+  - name: status
+    type: string
+    nullable: false
+    allowed_values:
+      - OPEN
+      - IN_PROGRESS
+      - COMPLETED
+      - CANCELLED
+    description: Current status of the maintenance intervention.
+
+  - name: technician_id
+    type: string
+    nullable: true
+    description: Identifier of the technician assigned to the intervention.
+
+  - name: description
+    type: string
+    nullable: true
+    description: Free-text description of the maintenance intervention.

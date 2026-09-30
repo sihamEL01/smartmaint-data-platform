@@ -1,0 +1,69 @@
+dataset:
+  name: sensor_measurements
+  description: Time-series measurements collected from industrial equipment sensors.
+  source: iot_sensors
+  format: csv
+  grain: One sensor measurement per equipment and timestamp.
+
+primary_key:
+  - measurement_id
+
+foreign_keys:
+  - column: equipment_id
+    references: equipment.equipment_id
+
+columns:
+  - name: measurement_id
+    type: string
+    nullable: false
+    description: Unique identifier of the sensor measurement.
+
+  - name: equipment_id
+    type: string
+    nullable: false
+    description: Identifier of the equipment that produced the measurement.
+
+  - name: measured_at
+    type: timestamp
+    nullable: false
+    description: Timestamp when the sensor measurement was recorded.
+
+  - name: temperature_c
+    type: float
+    nullable: false
+    unit: Celsius
+    min_value: -20
+    max_value: 150
+    description: Equipment temperature measured in degrees Celsius.
+
+  - name: vibration_mm_s
+    type: float
+    nullable: false
+    unit: mm/s
+    min_value: 0
+    max_value: 100
+    description: Equipment vibration velocity.
+
+  - name: pressure_bar
+    type: float
+    nullable: true
+    unit: bar
+    min_value: 0
+    max_value: 50
+    description: Operating pressure measured by the equipment sensor.
+
+  - name: humidity_pct
+    type: float
+    nullable: true
+    unit: percent
+    min_value: 0
+    max_value: 100
+    description: Relative humidity measured around the equipment.
+
+  - name: power_kw
+    type: float
+    nullable: true
+    unit: kW
+    min_value: 0
+    max_value: 1000
+    description: Electrical power consumed by the equipment.

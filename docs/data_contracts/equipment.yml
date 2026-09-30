@@ -1,0 +1,75 @@
+dataset:
+  name: equipment
+  description: Master data describing industrial equipment monitored by SmartMaint.
+  source: maintenance_postgresql
+  format: postgresql
+  grain: One row per industrial equipment.
+
+primary_key:
+  - equipment_id
+
+columns:
+  - name: equipment_id
+    type: string
+    nullable: false
+    description: Unique identifier of the equipment.
+
+  - name: equipment_name
+    type: string
+    nullable: false
+    description: Human-readable name of the equipment.
+
+  - name: equipment_type
+    type: string
+    nullable: false
+    allowed_values:
+      - PUMP
+      - COMPRESSOR
+      - MOTOR
+      - FAN
+      - CONVEYOR
+    description: Industrial equipment category.
+
+  - name: site_id
+    type: string
+    nullable: false
+    description: Identifier of the industrial site where the equipment is installed.
+
+  - name: site_name
+    type: string
+    nullable: false
+    description: Name of the industrial site.
+
+  - name: manufacturer
+    type: string
+    nullable: true
+    description: Equipment manufacturer.
+
+  - name: model
+    type: string
+    nullable: true
+    description: Manufacturer model reference.
+
+  - name: installation_date
+    type: date
+    nullable: false
+    description: Date when the equipment was commissioned.
+
+  - name: criticality
+    type: string
+    nullable: false
+    allowed_values:
+      - LOW
+      - MEDIUM
+      - HIGH
+      - CRITICAL
+    description: Business criticality level of the equipment.
+
+  - name: status
+    type: string
+    nullable: false
+    allowed_values:
+      - ACTIVE
+      - MAINTENANCE
+      - OUT_OF_SERVICE
+    description: Current operational status of the equipment.
