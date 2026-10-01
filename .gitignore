@@ -9,3 +9,5 @@ __pycache__/
 data/generated/*.csv
 # Python package metadata
 *.egg-info/
+# Local data lake
+data/lake/
