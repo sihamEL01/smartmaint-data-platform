@@ -1,2 +1,9 @@
+# Runtime dependencies
+pandas==3.0.6
+pyarrow==25.0.1
+psycopg[binary]==3.3.6
+python-dotenv==1.2.4
+
+# Development dependencies
 pytest==9.1.1
 ruff==0.16.5
