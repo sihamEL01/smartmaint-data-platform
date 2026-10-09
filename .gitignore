@@ -11,3 +11,4 @@ data/generated/*.csv
 *.egg-info/
 # Local data lake
 data/lake/
+.pytest_tmp/
